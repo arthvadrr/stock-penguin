@@ -15,7 +15,15 @@ func handler(w http.ResponseWriter, r *http.Request) {
 func main() {
   http.HandleFunc("/", handler)
   fmt.Println("Server listening on port 8080")
-  database.DatabaseInit()
+
+  dbPath := "database/sqldata/database.db"
+  err := database.DatabaseInit(dbPath)
+
+  if err != nil {
+    fmt.Println("Database creation failed. Error: %w", err)
+    return
+  }
+  
   http.ListenAndServe(":8080", nil)
 }
 
