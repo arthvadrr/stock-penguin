@@ -18,4 +18,10 @@
 # vendor/
 
 # Go workspace file
+
+# Probably overkill
 go.work
+.env
+.env/
+*.env
+.env/*

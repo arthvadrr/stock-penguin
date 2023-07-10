@@ -24,8 +24,24 @@ func DatabaseInit(dbPath string) error {
   _, userTableErr := db.Exec(userTableSQL)
 
   if userTableErr != nil {
-    fmt.Println("Failed to create table. Reason: %w", err)
+    fmt.Println("Failed to create table. Reason: %w", userTableErr)
   }
+
+  symbolOverviewTableSQL := `
+  CREATE TABLE IF NOT EXISTS symbols (
+  symbol VARCHAR(5) PRIMARY KEY,
+  assettype VARCHAR(64),
+  description TEXT,
+  cik INT(10),
+  country CHAR(3),
+  sector VARCHAR(128),
+  industry TEXT
+  )`
+
+  _, symbolOverviewTableErr := db.Exec(symbolTableSQL)
+
+  if symbolOverviewTableErr != nil {
+    fmt.Println("Failed to create symbol table. Reason: %w", symbolOverviewTableErr)
 
   defer db.Close()
 
