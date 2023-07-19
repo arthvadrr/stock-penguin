@@ -1,10 +1,9 @@
-package fetch
+package database
 
 import (
-  "fmt"
-  _ "github.com/mattn/go-sqlite3"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 func fetchSymbolData(symbol string) []string {
-  
+	return nil
 }
