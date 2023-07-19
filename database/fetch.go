@@ -32,7 +32,7 @@ func FetchSymbolData(symbol string) (map[string]interface{}, error) {
 	/**
 	* Making our GET request
 	**/
-	url := fmt.Sprintf("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&SYMBOL=%S&apikey=%s", symbol, apiKey)
+	url := fmt.Sprintf("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=%s&apikey=%s", symbol, apiKey)
 
 	response, err := http.Get(url)
 
@@ -61,8 +61,10 @@ func FetchSymbolData(symbol string) (map[string]interface{}, error) {
 			return nil, err
 		}
 
+		/**
+		* Everything looks good, ship it
+		**/
 		return data, nil
-
 	} else {
 		return nil, err
 	}
